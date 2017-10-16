@@ -2,14 +2,15 @@
 
 buildscript {
     ext {
-        kotlinVersion = '1.2.0-beta-31'
-        androidGradlePluginVersion = '3.0.0-beta7'
+        kotlinEapLink = 'http://dl.bintray.com/kotlin/kotlin-eap-1.2'
+        androidGradlePluginVersion = "3.0.0"
+        kotlinVersion = "1.2.0-rc-39"
     }
 
     repositories {
         google()
         jcenter()
-        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
+        maven { url "$kotlinEapLink" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
@@ -24,7 +25,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
+        maven { url "$kotlinEapLink"  }
     }
 }
 

@@ -4,22 +4,23 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 project.ext {
-    supportLibVersion = '26.1.0'
-    playServicesVersion = '11.4.0'
-    daggerVersion = '2.12'
-    ankoVersion = '0.10.1'
-    retrofitVersion = '2.3.0'
-    rxJavaVersion = "2.1.5"
+    supportLibVersion = "27.0.0"
+    playServicesVersion = "11.4.2"
+    daggerVersion = "2.12"
+    ankoVersion = "0.10.2"
+    retrofitVersion = "2.3.0"
+    rxJavaVersion = "2.1.6"
     rxAndroidVersion = "2.0.1"
+    androidLifecycleVersion = "1.0.0"
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.gifgroen.tickt"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,6 +30,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -40,7 +45,7 @@ dependencies {
     androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
     //Dagger 2 dependencies
     implementation "com.google.dagger:dagger:$project.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
@@ -53,4 +58,10 @@ dependencies {
     // Rx for reactive controls.
     implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+
+    // Android arch components
+    implementation "android.arch.lifecycle:runtime:1.0.3"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.androidLifecycleVersion"
+    // Lifecycle ViewModel
+    implementation "android.arch.lifecycle:extensions:$project.androidLifecycleVersion"
 }

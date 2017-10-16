@@ -11,8 +11,8 @@ class EventRepository {
         private val BASE_URL = "https://app.ticketmaster.com/"
         private val service = Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(OkHttpClient.Builder().addInterceptor { chain ->
-                    val original = chain.request()
+                .client(OkHttpClient.Builder().addInterceptor {
+                    val original = it.request()
                     val originalHttpUrl = original.url()
 
                     val url = originalHttpUrl.newBuilder()
@@ -21,7 +21,7 @@ class EventRepository {
 
                     val requestBuilder = original.newBuilder().url(url)
                     val request = requestBuilder.build()
-                    chain.proceed(request)
+                    it.proceed(request)
                 }.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

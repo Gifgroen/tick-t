@@ -1,3 +1,5 @@
 package com.gifgroen.tickt.model.embedded
 
-data class EventSearch(val events: List<EventLocation>)
+import com.gifgroen.tickt.model.data.Event
+
+data class EventSearch(val events: List<Event>)

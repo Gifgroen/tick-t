@@ -2,10 +2,7 @@ package com.gifgroen.tickt.model.data
 
 import com.gifgroen.tickt.model.base.Result
 import com.gifgroen.tickt.model.embedded.EventLocation
-import com.gifgroen.tickt.model.internal.Location
-import com.gifgroen.tickt.model.internal.PriceRange
-import com.gifgroen.tickt.model.internal.Promoter
-import com.gifgroen.tickt.model.internal.SeatMap
+import com.gifgroen.tickt.model.internal.*
 
 data class Event(
         val type: String,
@@ -19,11 +16,11 @@ data class Event(
         val additionalInfo: String,
         val url: String,
         val images: List<Image>,
-        // TODO: Dates dates
-        // TODO: Sales sales
+        val dates: Dates,
+        val sales: Sales,
         val info: String,
         val pleaseNote: String,
-        val priceRanges: PriceRange,
+        val priceRanges: List<PriceRange>,
         val promoter: Promoter,
         val seatMap: SeatMap,
         val classification: List<Classification>,
