@@ -2,11 +2,22 @@
 
 buildscript {
     ext {
-        kotlinEapLink = 'http://dl.bintray.com/kotlin/kotlin-eap-1.2'
-        androidGradlePluginVersion = "3.0.0"
-        kotlinVersion = "1.2.0-rc-39"
-    }
+        androidGradlePluginVersion = "3.0.1"
 
+        kotlinEapLink = 'http://dl.bintray.com/kotlin/kotlin-eap-1.2'
+        kotlinVersion = "1.2.0-rc-39"
+
+        compileSdkVersion = 27
+        minSdkVersion = 15
+        targetSdkVersion = 27
+
+        supportLibVersion = "27.0.1"
+        playServicesVersion = "11.4.2"
+
+        retrofitVersion = "2.3.0"
+        rxJavaVersion = "2.1.6"
+        rxAndroidVersion = "2.0.1"
+    }
     repositories {
         google()
         jcenter()
@@ -25,7 +36,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "$kotlinEapLink"  }
+        maven { url "$kotlinEapLink" }
     }
 }
 

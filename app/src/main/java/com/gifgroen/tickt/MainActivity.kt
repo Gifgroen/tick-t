@@ -3,8 +3,9 @@ package com.gifgroen.tickt
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.gifgroen.tickt.model.base.Result
-import com.gifgroen.tickt.model.embedded.EventSearch
+import com.gifgroen.base.EventRepository
+import com.gifgroen.base.model.base.Result
+import com.gifgroen.base.model.embedded.EventSearch
 import io.reactivex.schedulers.Schedulers
 
 
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         EventRepository.discovery().searchEvents("metallica")
                 .subscribeOn(Schedulers.computation()).subscribe(this::onSearch, ::onSearchError)
