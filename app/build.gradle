@@ -44,4 +44,12 @@ dependencies {
     // Rx for reactive controls.
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+    // Architecture components.
+    implementation "android.arch.lifecycle:runtime:$archVersion"
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    implementation "android.arch.lifecycle:common-java8:$archVersion"
+    implementation "android.arch.lifecycle:compiler:$archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
+    kapt "android.arch.lifecycle:compiler:$archVersion"
 }

@@ -1,4 +1,4 @@
-package com.gifgroen.base
+package com.gifgroen.base.discovery
 
 import com.gifgroen.base.model.base.Result
 import com.gifgroen.base.model.data.Event
