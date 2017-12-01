@@ -3,6 +3,7 @@ package com.gifgroen.base.discovery
 import com.gifgroen.base.model.base.Result
 import com.gifgroen.base.model.data.Attraction
 import com.gifgroen.base.model.data.Event
+import com.gifgroen.base.model.embedded.AttractionSearch
 import com.gifgroen.base.model.embedded.EventSearch
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -22,5 +23,5 @@ interface Discovery {
 
     // ATTRACTIONS
     @GET("discovery/v2/attractions.json")
-    fun attractionByKeyword(@Query("keyword") keyword: String): Observable<Result<Attraction>>
+    fun attractionByKeyword(@Query("keyword") keyword: String): Observable<Result<AttractionSearch>>
 }
