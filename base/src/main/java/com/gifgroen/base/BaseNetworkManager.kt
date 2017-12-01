@@ -5,11 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+const val API_KEY = ""
+
+const val BASE_URL = "https://app.ticketmaster.com/"
+
 open class BaseNetworkManager {
-
-    private val API_KEY by lazy { "" }
-
-    private val BASE_URL by lazy { "https://app.ticketmaster.com/" }
 
     private val CALL_ADAPTER_FACTORY by lazy { RxJava2CallAdapterFactory.create() }
 

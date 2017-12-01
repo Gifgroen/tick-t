@@ -52,4 +52,7 @@ dependencies {
     implementation "android.arch.lifecycle:compiler:$archVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
     kapt "android.arch.lifecycle:compiler:$archVersion"
+
+    // jsr-310
+    implementation "com.jakewharton.threetenabp:threetenabp:$threetenVersion"
 }

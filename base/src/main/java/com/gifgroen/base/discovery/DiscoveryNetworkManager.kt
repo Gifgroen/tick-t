@@ -9,8 +9,13 @@ import io.reactivex.schedulers.Schedulers
 class DiscoveryNetworkManager : BaseNetworkManager() {
     private val discovery: Discovery = create(Discovery::class.java)
 
-    fun search(keyword: String): Observable<Result<EventSearch>> {
-        return discovery.searchEvents(keyword)
+    fun eventsByKeyword(keyword: String): Observable<Result<EventSearch>> {
+        return discovery.eventsByKeyword(keyword)
+                .subscribeOn(Schedulers.io())
+    }
+
+    fun eventsByDateRange(start: String, end: String): Observable<Result<EventSearch>> {
+        return discovery.eventsByDateRange(start, end)
                 .subscribeOn(Schedulers.io())
     }
 }

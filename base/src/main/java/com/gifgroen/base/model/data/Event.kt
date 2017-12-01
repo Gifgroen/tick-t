@@ -25,5 +25,4 @@ data class Event(
         val seatMap: SeatMap,
         val classification: List<Classification>,
         val place: Place
-        )
-    : Result<EventLocation>()
+) : Result<EventLocation>()
