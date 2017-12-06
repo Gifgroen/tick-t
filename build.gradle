@@ -20,6 +20,7 @@ buildscript {
         archVersion = "1.0.0"
 
         threetenVersion = "1.0.5"
+        ankoVersion = "0.10.3"
     }
     repositories {
         google()

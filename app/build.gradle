@@ -39,6 +39,7 @@ dependencies {
     implementation project(":base")
 
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Rx for reactive controls.
@@ -55,4 +56,6 @@ dependencies {
 
     // jsr-310
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenVersion"
+
+    implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
 }
