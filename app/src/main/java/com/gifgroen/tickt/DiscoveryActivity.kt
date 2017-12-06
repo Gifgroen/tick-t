@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.gifgroen.base.model.data.Attraction
 import com.gifgroen.base.model.data.Event
-import org.threeten.bp.LocalDate
-import org.threeten.bp.ZoneOffset
+import org.threeten.bp.*
+import org.threeten.bp.temporal.TemporalAdjusters
 
 class DiscoveryActivity : AppCompatActivity() {
 
@@ -17,39 +17,18 @@ class DiscoveryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_discovery)
 
+
         val viewModel = ViewModelProviders.of(this).get(DiscoveryViewModel::class.java)
 
-        viewModel.eventsByKeyword("In flames").subscribe(::onEvents, ::onSearchError)
+        LocalDate.now().atStartOfDay(ZoneOffset.systemDefault()).also { today ->
+                Log.e(TAG, "Show remainder of week")
+                val laterDate = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY))
 
-        LocalDate.now().atStartOfDay(ZoneOffset.systemDefault())
-                .also { today ->
-                    val end = today.plusDays(1)
-                    viewModel.eventsByDateRange(today.toInstant(), end.toInstant())
-                            .subscribe(::onEvents, ::onSearchError)
-                }
-
-        viewModel.attractionByKeyword("Five finger death punch")
-                .subscribe(::onAttractions, ::onSearchError)
-
-        LocalDate.now().atStartOfDay(ZoneOffset.systemDefault())
-                .also { today ->
-                    val end = today.plusDays(7)
-                    viewModel.eventsByDateRange(today.toInstant(), end.toInstant())
-                            .subscribe(::onEvents, ::onSearchError)
-                }
-
-        viewModel.attractionByKeyword("In flames")
-                .subscribe(::onAttractions, ::onSearchError)
-
-        LocalDate.now().atStartOfDay(ZoneOffset.systemDefault())
-                .also { today ->
-                    val end = today.plusDays(42)
-                    viewModel.eventsByDateRange(today.toInstant(), end.toInstant())
-                            .subscribe(::onEvents, ::onSearchError)
-                }
-
-        viewModel.attractionByKeyword("Metallica")
-                .subscribe(::onAttractions, ::onSearchError)
+                Log.e(TAG, "Duration between $today and $laterDate: ${Duration.between(today, laterDate)}")
+                // Load events from now until sunday.
+                viewModel.eventsByDateRange(today.toInstant(), laterDate.toInstant())
+                        .subscribe(::onEvents, ::onSearchError)
+            }
     }
 
     private fun onAttractions(attractions: List<Attraction>?) {

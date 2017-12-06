@@ -12,10 +12,10 @@ import retrofit2.http.Query
 
 interface Discovery {
     // EVENTS
-    @GET("discovery/v2/events.json")
+    @GET("discovery/v2/events.json?segmentName=music")
     fun eventsByKeyword(@Query("keyword") keyword: String): Observable<Result<EventSearch>>
 
-    @GET("discovery/v2/events.json")
+    @GET("discovery/v2/events.json?segmentName=music")
     fun eventsByDateRange(@Query("startDateTime") startDateTime: String, @Query("endDateTime") endDateTime: String): Observable<Result<EventSearch>>
 
     @GET("discovery/v2/events/{id}")
